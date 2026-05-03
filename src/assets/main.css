@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  background-color: #f0f4fa;
+}
+
+h1, h2, h3 {
+  font-family: 'DM Serif Display', serif;
+}

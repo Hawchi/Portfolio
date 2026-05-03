@@ -1,0 +1,6 @@
+* text=auto eol=lf
+public/bm-discography.mp4 filter=lfs diff=lfs merge=lfs -text
+public/bm-lore.mp4 filter=lfs diff=lfs merge=lfs -text
+public/bm-memory-vault.mp4 filter=lfs diff=lfs merge=lfs -text
+public/bm-member-profiles.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mp4 !text !filter !merge !diff
