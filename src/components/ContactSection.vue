@@ -20,7 +20,7 @@
 
 <style scoped>
 .contact {
-  padding: 6rem 8rem;
+  padding: 8rem 8rem;
   background-color: #dbe9ff;
   text-align: center;
 }
