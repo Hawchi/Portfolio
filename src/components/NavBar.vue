@@ -2,7 +2,13 @@
   <nav :class="{ scrolled: isScrolled }">
     <button @click="goHome" class="logo">Paulien.</button>
 
-    <ul>
+    <button class="hamburger" @click="menuOpen = !menuOpen" :class="{ open: menuOpen }">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul :class="{ open: menuOpen }">
       <li>
         <button @click="scrollTo('about')" :class="{ active: activeSection === 'about' }">About</button>
       </li>
@@ -14,9 +20,9 @@
           Projects ▾
         </button>
         <ul class="dropdown">
-          <li><RouterLink to="/projects/border-moonlight">Border:Moonlight</RouterLink></li>
-          <li><RouterLink to="/projects/digital-paradise">Digital Paradise</RouterLink></li>
-          <li><RouterLink to="/projects/cz-zorgvinder">CZ Zorgvinder</RouterLink></li>
+          <li><RouterLink to="/projects/border-moonlight" @click="menuOpen = false">Border:Moonlight</RouterLink></li>
+          <li><RouterLink to="/projects/digital-paradise" @click="menuOpen = false">Digital Paradise</RouterLink></li>
+          <li><RouterLink to="/projects/cz-zorgvinder" @click="menuOpen = false">CZ Zorgvinder</RouterLink></li>
         </ul>
       </li>
       <li>
@@ -34,8 +40,10 @@ const router = useRouter()
 const route = useRoute()
 const isScrolled = ref(false)
 const activeSection = ref('')
+const menuOpen = ref(false)
 
 function goHome() {
+  menuOpen.value = false
   if (route.path !== '/') {
     router.push('/')
   } else {
@@ -44,6 +52,7 @@ function goHome() {
 }
 
 async function scrollTo(id) {
+  menuOpen.value = false
   activeSection.value = id
 
   if (route.path !== '/') {
@@ -113,6 +122,39 @@ nav.scrolled {
   text-decoration: none;
   color: #1a1a2e;
   font-family: 'DM Serif Display', serif;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #1a1a2e;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 ul {
@@ -183,5 +225,45 @@ button.active::after {
 
 .has-dropdown:hover .dropdown {
   display: flex;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: #fff;
+    padding: 2rem;
+    gap: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    align-items: flex-start;
+  }
+
+  ul.open {
+    display: flex;
+  }
+
+  .has-dropdown:hover .dropdown {
+    display: none;
+  }
+
+  .dropdown {
+    position: static;
+    box-shadow: none;
+    padding: 0.5rem 0 0 1rem;
+    border-top: none;
+    display: flex;
+  }
+
+  nav {
+    padding: 1rem 1.5rem;
+  }
 }
 </style>
