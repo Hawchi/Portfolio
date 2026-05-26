@@ -44,6 +44,8 @@ function goHome() {
 }
 
 async function scrollTo(id) {
+  activeSection.value = id
+
   if (route.path !== '/') {
     await router.push('/')
     setTimeout(() => {
@@ -58,6 +60,13 @@ async function scrollTo(id) {
 
 function handleScroll() {
   isScrolled.value = window.scrollY > 20
+
+  const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
+
+  if (isAtBottom) {
+    activeSection.value = 'contact'
+    return
+  }
 
   const sections = ['contact', 'projects', 'skills', 'about']
   let found = false
