@@ -91,6 +91,51 @@
       </div>
     </section>
 
+    <section class="design-highlights" v-if="project.designHighlights">
+      <div class="features-header">
+        <p class="label">DESIGN HIGHLIGHTS</p>
+        <h2>Logo's & <em>Stylescapes</em></h2>
+      </div>
+
+      <div class="solution-cards" v-if="project.solutionCards">
+        <div class="solution-card" v-for="(card, index) in project.solutionCards" :key="index">
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.description }}</p>
+        </div>
+      </div>
+
+      <div class="highlights-block">
+        <p class="block-label">STYLESCAPES</p>
+        <div class="stylescapes">
+          <img src="/dp-stylescape-1.png" alt="Stylescape 1" />
+          <img src="/dp-stylescape-2.png" alt="Stylescape 2" />
+        </div>
+      </div>
+
+      <div class="highlights-block">
+        <p class="block-label">LOGO CONCEPTS</p>
+        <div class="logos">
+          <div class="logo-card">
+            <img src="/dp-logo-1.png" alt="Logo concept 1" />
+          </div>
+          <div class="logo-card">
+            <img src="/dp-logo-2.png" alt="Logo concept 2" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vinyl-interaction" v-if="project.interactionVideo">
+          <div class="vinyl-text">
+            <p class="label">THE INTERACTION</p>
+            <h2>{{ project.interactionTitle }} <em>{{ project.interactionTitleItalic }}</em></h2>
+            <p>{{ project.interactionDescription }}</p>
+          </div>
+          <div class="vinyl-video">
+            <video :src="project.interactionVideo" autoplay muted loop playsinline></video>
+          </div>
+    </section>
+
     <section class="back-top">
       <button @click="scrollToTop" class="btn-primary">Back To Top</button>
     </section>
@@ -510,4 +555,146 @@ h2 em {
     justify-content: center;
   }
 }
+
+.design-highlights {
+  padding: 6rem 8rem;
+  background-color: #f7f9ff;
+  border-top: 1px solid #e8e8e8;
+}
+
+.stylescapes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto 3rem auto;
+}
+
+.stylescapes img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.logos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.logo-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e8e8e8;
+}
+
+.logo-card img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .design-highlights { padding: 3rem 2rem; }
+  .logos { grid-template-columns: 1fr; }
+}
+
+
+.vinyl-interaction {
+  padding: 6rem 8rem;
+  background-color: #fff;
+  border-top: 1px solid #e8e8e8;
+}
+
+.vinyl-interaction-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+}
+
+.vinyl-text {
+  max-width: 900px;
+  margin: 0 auto 2rem auto;
+}
+
+.vinyl-text p {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.vinyl-video {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.vinyl-video video {
+  width: 100%;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .design-highlights { padding: 3rem 2rem; }
+  .highlights-grid { grid-template-columns: 1fr; }
+  .vinyl-interaction {
+    flex-direction: column;
+    padding: 3rem 2rem;
+  }
+}
+
+.highlights-block {
+  max-width: 1000px;
+  margin: 0 auto 3rem auto;
+}
+
+.block-label {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+}
+
+.solution-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 700px;
+  width: 100%;
+  margin: 1.5rem auto 0 auto;
+}
+
+.solution-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e8e8e8;
+  text-align: center;
+}
+
+.solution-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  margin-bottom: 0.75rem;
+}
+
+.solution-card p {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+}
+
 </style>
