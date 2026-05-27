@@ -34,40 +34,42 @@
       </div>
     </section>
 
-<section class="problem-solution">
-  <div class="block fade-in" ref="problemBlock">
-    <p class="label">THE PROBLEM</p>
-    <h2>{{ project.problemTitle }} <em>{{ project.problemTitleItalic }}</em></h2>
-    <p>{{ project.problem }}</p>
-  </div>
+    <section class="problem-solution">
+      <div class="block">
+        <p class="label">THE PROBLEM</p>
+        <h2>{{ project.problemTitle }} <em>{{ project.problemTitleItalic }}</em></h2>
+        <p>{{ project.problem }}</p>
+      </div>
 
-  <hr class="divider" />
+      <hr class="divider" />
 
-  <div class="block fade-in" ref="solutionBlock">
-    <p class="label">THE SOLUTION</p>
-    <h2>{{ project.solutionTitle }} <em>{{ project.solutionTitleItalic }}</em></h2>
-    <p>{{ project.solution }}</p>
-    <p v-if="project.solutionExtra" class="extra">{{ project.solutionExtra }}</p>
-  </div>
+      <div class="block">
+        <p class="label">THE SOLUTION</p>
+        <h2>{{ project.solutionTitle }} <em>{{ project.solutionTitleItalic }}</em></h2>
+        <p>{{ project.solution }}</p>
+        <p v-if="project.solutionExtra" class="extra">{{ project.solutionExtra }}</p>
+      </div>
 
-  <div class="showcase-video fade-in" ref="videoBlock" v-if="project.homepageVideo">
-    <video :src="project.homepageVideo" autoplay muted loop playsinline></video>
-  </div>
-</section>
+      <div class="showcase-video" v-if="project.homepageVideo">
+        <video :src="project.homepageVideo" autoplay muted loop playsinline></video>
+      </div>
+    </section>
 
     <section class="features" v-if="project.features">
-      <p class="label">DYNAMIC LANDING EXPERIENCES</p>
-      <h2>{{ project.featuresTitle }} <em>{{ project.featuresTitleItalic }}</em></h2>
-      <p class="features-subtitle">{{ project.featuresSubtitle }}</p>
+      <div class="features-header">
+        <p class="label">DYNAMIC LANDING EXPERIENCES</p>
+        <h2>{{ project.featuresTitle }} <em>{{ project.featuresTitleItalic }}</em></h2>
+        <p class="features-subtitle">{{ project.featuresSubtitle }}</p>
+      </div>
 
       <div class="carousel">
         <button class="carousel-btn prev" @click="prevSlide">‹</button>
 
-          <div
-            class="carousel-content"
-            @touchstart="handleTouchStart"
-            @touchend="handleTouchEnd"
-          >
+        <div
+          class="carousel-content"
+          @touchstart="handleTouchStart"
+          @touchend="handleTouchEnd"
+        >
           <div class="carousel-video">
             <video :src="project.features[currentSlide].video" autoplay muted loop playsinline></video>
           </div>
@@ -78,8 +80,7 @@
               <span
                 v-for="(feature, index) in project.features"
                 :key="index"
-                class="dot"
-                :class="{ active: index === currentSlide }"
+                :class="['dot', { active: index === currentSlide }]"
                 @click="currentSlide = index"
               ></span>
             </div>
@@ -297,7 +298,6 @@ h1 {
   border-radius: 12px;
 }
 
-/* Problem & Solution */
 .problem-solution {
   display: flex;
   flex-direction: column;
@@ -305,11 +305,13 @@ h1 {
   padding: 6rem 8rem;
   background-color: #fff;
   align-items: center;
-  text-align: center;
 }
 
 .block {
   max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .block p {
@@ -333,6 +335,7 @@ h1 {
 .showcase-video {
   width: 100%;
   max-width: 900px;
+  margin: 0 auto;
 }
 
 .showcase-video video {
@@ -362,12 +365,16 @@ h2 em {
   font-style: italic;
 }
 
-/* Features & Carousel */
 .features {
   padding: 6rem 8rem;
   background-color: #fff;
   border-top: 1px solid #e8e8e8;
-  text-align: center;
+}
+
+.features-header {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  text-align: left;
 }
 
 .features-subtitle {
@@ -376,13 +383,14 @@ h2 em {
   color: #555;
   line-height: 1.7;
   max-width: 600px;
-  margin: 0 auto 3rem auto;
 }
 
 .carousel {
   display: flex;
   align-items: center;
   gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .carousel-btn {
@@ -463,7 +471,6 @@ h2 em {
   background-color: #e07a7a;
 }
 
-/* Back to top */
 .back-top {
   padding: 3rem 8rem;
   background-color: #fff;
