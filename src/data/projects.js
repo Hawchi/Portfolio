@@ -43,7 +43,7 @@ export const projects = [
       },
     ],
   },
-  {
+{
     id: 'digital-paradise',
     title: 'Digital Paradise',
     category: 'UX/UI Design & Web Development',
@@ -59,6 +59,32 @@ export const projects = [
     solutionTitle: 'A cohesive',
     solutionTitleItalic: 'brand world',
     solution: 'A cohesive visual identity including logo concepts and stylescapes, paired with an interactive website that brings his musical atmosphere to life.',
+    solutionCards: [
+      {
+        title: 'Logo concepts',
+        description: 'Two logo concepts were created: a clean DP monogram and a tropical wordmark featuring a palm tree silhouette, giving the client options between a minimal and an expressive style.',
+      },
+      {
+        title: 'Stylescapes',
+        description: 'Two visual directions: one centered on urban party culture and community energy, the other on tropical Caribbean festival vibes.',
+      },
+    ],
+    designHighlights: [
+      {
+        title: 'Logo Concepts',
+        description: 'Two individual logo concepts developed during the first phase of the project.',
+        images: ['/dp-logo-1.png', '/dp-logo-2.png'],
+      },
+      {
+        title: 'Stylescapes',
+        description: 'Two stylescapes created to define the mood, color palette and visual language of the brand.',
+        images: ['/dp-stylescape-1.png', '/dp-stylescape-2.png'],
+      },
+    ],
+    interactionTitle: 'The Vinyl',
+    interactionTitleItalic: 'Interaction',
+    interactionDescription: 'I designed and built the About page for the Digital Paradise website, featuring a scroll-driven vinyl animation. As you scroll, the disc slides into view and rotates with each movement, revealing different information about the artist one block at a time.',
+    interactionVideo: '/dp-vinyl.mp4',
   },
   {
     id: 'cz-zorgvinder',
