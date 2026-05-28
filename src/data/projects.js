@@ -86,21 +86,84 @@ export const projects = [
     interactionDescription: 'I designed and built the About page for the Digital Paradise website, featuring a scroll-driven vinyl animation. As you scroll, the disc slides into view and rotates with each movement, revealing different information about the artist one block at a time.',
     interactionVideo: '/dp-vinyl.mp4',
   },
-  {
+{
     id: 'cz-zorgvinder',
     title: 'CZ Zorgvinder',
     category: 'UX/UI Design',
-    shortDescription: 'A design enhancement that transforms the CZ Zorgvinder into an empathatic, accessible guide for mental health services.',
+    shortDescription: 'A design enhancement that transforms the CZ Zorgvinder into an empathetic, accessible guide for mental health services.',
     role: 'UX/UI Designer',
     timeline: '4 weeks',
     tools: 'Figma · Prototyping · UX Research',
     liveUrl: null,
     repoUrl: null,
+    heroImage: '/cz-zorgvinder1.png',
     problemTitle: 'Finding care',
     problemTitleItalic: 'shouldn\'t be hard',
-    problem: 'Clients of source CZ seeking mental health support were struggling to find suitable practitioners.',
+    problem: 'Clients of CZ seeking mental health support were struggling to find suitable practitioners. The platform was confusing, overwhelmed users with irrelevant results, and hid crucial information like clinic reviews and waiting times behind collapsed dropdowns, making it harder for vulnerable users to find what they needed quickly and with confidence.',
     solutionTitle: 'A complete',
     solutionTitleItalic: 'redesign',
-    solution: 'A complete redesign of the Zorgvinder platform, transforming it into an empathetic, accessible and intuitive guide.',
+    solution: 'A full UX/UI redesign of the Zorgvinder platform, transforming it into an empathetic, accessible and intuitive guide. The redesigned flow helps vulnerable users find the right care faster, with added support for urgent mental health needs.',
+
+    researchIntro: 'Before designing anything, I needed to understand why the current platform was failing its users. I conducted competitor benchmarking and ran initial user tests on the existing CZ website.',
+    researchFindings: [
+      {
+        title: 'Hidden information',
+        description: 'Users couldn\'t find clinic reviews because they were buried under collapsible dropdowns.',
+      },
+      {
+        title: 'Confusing search',
+        description: 'The split filter for "Search by Care" vs "Search by Name" caused immediate confusion.',
+      },
+      {
+        title: 'Map issues',
+        description: 'The map was too zoomed out, and the 10km default radius overwhelmed users with irrelevant results.',
+      },
+    ],
+    researchInsights: [
+      'Rising demand for mental health care, especially ADHD and depression.',
+      'Up-to-date waiting times and support for international clients via language filters.',
+      'A chatbot for real-time guidance through the platform.',
+    ],
+    researchImage: '/cz-affinitymap.png',
+
+    prototypingIntro: 'After understanding what needed to change, I moved into Figma. My goal was to design a flow where users could find help without having to struggle with the interface.',
+    interventions: [
+      {
+        title: 'Global Search',
+        description: 'Replaced the confusing dual-search filters with one simple, intuitive search bar that carries over across pages.',
+      },
+      {
+        title: 'Transparency',
+        description: 'Pulled reviews, waiting times, and contract statuses out of hidden dropdowns and placed them directly on the clinic cards.',
+      },
+      {
+        title: 'Crisis Support',
+        description: 'Added an immediate, highly visible Suicide Prevention and Crisis Hotline for users with urgent mental health needs.',
+      },
+      {
+        title: 'Language Filter',
+        description: 'Added spoken language indicators on clinic cards to support international clients, a direct result of client feedback.',
+      },
+    ],
+      beforeImage: '/cz-before.png',
+      afterImage: '/cz-after.png',
+
+    iterationIntro: 'A core part of this project was continuous testing. The final design was not just an initial concept, but was shaped by multiple rounds of user feedback.',
+    iterations: [
+      {
+        title: 'Imagery',
+        description: 'Early testers noted that placeholder images felt disconnected from the target audience. I updated the photography to better reflect the actual users and included photos of real clinics to build trust.',
+      },
+      {
+        title: 'Languages on clinic cards',
+        description: 'Testers noted that the clinic card should clearly display which languages are spoken, making it easier for non-Dutch speakers to find suitable care.',
+      },
+      {
+        title: 'Filter & dropdown defaults',
+        description: 'Many smaller adjustments such as filter defaults and dropdown settings were changed based on direct feedback from testers trying to complete real tasks.',
+      },
+    ],
+
+    finalImage: '/cz-final.png',
   },
 ]
