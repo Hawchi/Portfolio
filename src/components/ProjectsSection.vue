@@ -1,7 +1,9 @@
 <template>
   <section class="projects" id="projects">
-    <p class="label">MY WORK</p>
-    <h2>Selected <em>Projects</em></h2>
+    <div class="projects-header">
+      <p class="label">MY WORK</p>
+      <h2>Selected <em>Projects</em></h2>
+    </div>
 
     <div class="projects-list">
       <div
@@ -11,7 +13,7 @@
         :class="{ reverse: index % 2 !== 0 }"
       >
         <div class="project-image">
-          <img :src="`/${project.id}.png`" :alt="project.title" />
+        <img :src="project.heroImage || `/${project.id}.png`" :alt="project.title" />
         </div>
         <div class="project-info">
           <p class="category">{{ project.category }}</p>
@@ -31,7 +33,7 @@ import { projects } from '../data/projects.js'
 
 <style scoped>
 .projects {
-  padding: 6rem 8rem;
+  padding: 6rem clamp(2rem, 8vw, 12rem);
   background-color: #fff;
 }
 
@@ -60,6 +62,13 @@ h2 em {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-header {
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
 }
 
 .project-card {

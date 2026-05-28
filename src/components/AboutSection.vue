@@ -1,5 +1,6 @@
 <template>
-  <section class="about" id="about">
+<section class="about" id="about">
+  <div class="about-inner">
     <div class="about-text">
       <p class="label">ABOUT ME</p>
       <h2 class="title-wrapper">
@@ -26,7 +27,8 @@
     <div class="about-image">
       <img src="/about-photo.png" alt="Drawing of a girl" />
     </div>
-  </section>
+  </div>
+</section>
 </template>
 
 <script setup>
@@ -80,12 +82,22 @@ onUnmounted(() => {
 
 <style scoped>
 .about {
+  padding: 6rem clamp(2rem, 8vw, 12rem);
+  background-color: #fff;
+}
+
+.about-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem 8rem;
-  background-color: #fff;
   gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1;
+  max-width: 600px;
 }
 
 .label {

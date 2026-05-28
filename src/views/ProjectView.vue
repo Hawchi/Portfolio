@@ -55,6 +55,96 @@
       </div>
     </section>
 
+  <section class="research" v-if="project.researchIntro">
+  <div class="features-header">
+    <p class="label">DISCOVERY</p>
+    <h2>Discovery & <em>User Research</em></h2>
+    <p class="features-subtitle">{{ project.researchIntro }}</p>
+  </div>
+
+  <div class="research-content">
+    <div class="research-findings">
+      <p class="block-label">WHAT USERS TOLD US</p>
+      <div class="findings-grid">
+        <div class="finding-card" v-for="(finding, index) in project.researchFindings" :key="index">
+          <h3>{{ finding.title }}</h3>
+          <p>{{ finding.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-insights">
+      <p class="block-label">WHAT THE CLIENT NEEDED</p>
+      <ul>
+        <li v-for="(insight, index) in project.researchInsights" :key="index">{{ insight }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="research-image" v-if="project.researchImage">
+    <img :src="project.researchImage" alt="Research sticky notes" />
+  </div>
+</section>
+
+<section class="prototyping" v-if="project.interventions">
+  <div class="features-header">
+    <p class="label">IDEATION</p>
+    <h2>Ideation & <em>Prototyping</em></h2>
+    <p class="features-subtitle">{{ project.prototypingIntro }}</p>
+  </div>
+
+  <p class="block-label" style="max-width:1000px; margin: 0 auto 1.5rem auto;">KEY DESIGN INTERVENTIONS</p>
+  <div class="interventions-grid">
+    <div class="intervention-card" v-for="(item, index) in project.interventions" :key="index">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+
+  <div class="before-after" v-if="project.beforeImage">
+    <p class="label" style="max-width:1000px; margin: 3rem auto 1.5rem auto;">BEFORE & AFTER</p>
+    <div class="before-after-grid">
+      <div>
+        <p class="ba-label">BEFORE — CZ CLINIC INFORMATION</p>
+        <img :src="project.beforeImage" alt="Before redesign" />
+      </div>
+      <div>
+        <p class="ba-label">AFTER — THE REDESIGN</p>
+        <img :src="project.afterImage" alt="After redesign" />
+      </div>
+    </div>
+  </div>
+  </section>
+
+<section class="iteration" v-if="project.iterations">
+  <div class="features-header">
+    <p class="label">USER TESTING</p>
+    <h2>User Testing & <em>Iteration</em></h2>
+    <p class="features-subtitle">{{ project.iterationIntro }}</p>
+  </div>
+
+  <p class="block-label" style="max-width:700px; margin: 0 auto 1.5rem auto;">HOW FEEDBACK CHANGED THE DESIGN</p>
+  <div class="iteration-list">
+    <div class="iteration-item" v-for="(item, index) in project.iterations" :key="index">
+    <div class="iteration-icon">★</div>
+      <div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-design" v-if="project.finalImage">
+  <div class="features-header">
+    <p class="label">FINAL DESIGN</p>
+    <h2>The <em>Redesign</em></h2>
+  </div>
+  <div class="final-image">
+    <img :src="project.finalImage" alt="Final redesign" />
+  </div>
+</section>
+
     <section class="features" v-if="project.features">
       <div class="features-header">
         <p class="label">DYNAMIC LANDING EXPERIENCES</p>
@@ -695,6 +785,200 @@ h2 em {
   font-size: 0.95rem;
   color: #555;
   line-height: 1.7;
+}
+
+.research {
+  padding: 6rem 8rem;
+  background-color: #f7f9ff;
+  border-top: 1px solid #e8e8e8;
+}
+
+.research-content {
+  max-width: 1000px;
+  margin: 0 auto 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.before-after-grid img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.before-after {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.research-findings {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.findings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.finding-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 1rem;
+}
+
+.finding-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: #1a1a2e;
+  margin-bottom: 0.4rem;
+}
+
+.finding-card p {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.research-insights ul {
+  list-style: none;
+  padding: 0;
+}
+
+.research-insights ul li {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.research-image {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.research-image img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.prototyping {
+  padding: 6rem 8rem;
+  background-color: #fff;
+  border-top: 1px solid #e8e8e8;
+}
+
+.interventions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto 3rem auto;
+}
+
+.intervention-card {
+  background-color: #f7f9ff;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #e8e8e8;
+  text-align: center;
+}
+
+.intervention-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: #1a1a2e;
+  margin-bottom: 0.75rem;
+}
+
+.intervention-card p {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.ba-label {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+}
+
+.iteration {
+  padding: 6rem 8rem;
+  background-color: #f7f9ff;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: none;
+}
+
+.iteration-list {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.iteration-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.iteration-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  color: #e07a7a;
+}
+
+.iteration-item h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  margin-bottom: 0.4rem;
+}
+
+.iteration-item p {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.final-design {
+  padding: 6rem 8rem;
+  background-color: #f7f9ff;
+}
+
+
+.final-image {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.final-image img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .research { padding: 3rem 2rem; }
+  .research-content { grid-template-columns: 1fr; }
+  .prototyping { padding: 3rem 2rem; }
+  .interventions-grid { grid-template-columns: 1fr; }
+  .before-after-grid { grid-template-columns: 1fr; }
+  .iteration { padding: 3rem 2rem; }
+  .final-design { padding: 3rem 2rem; }
 }
 
 </style>
