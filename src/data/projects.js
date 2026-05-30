@@ -24,22 +24,22 @@ export const projects = [
       {
         title: 'Discography',
         description: 'The discography page includes a video player that automatically plays and cycles through music videos, making the experience more dynamic and connected to the music.',
-        video: '/bm-discography.mp4',
+        video: 'https://github.com/Hawchi/Portfolio/releases/download/v1.0/bm-discography.mp4',
       },
       {
         title: 'Memory Vault',
         description: 'Designed as a digital archive with a continuous film roll animation. A hover effect transitions black-and-white clips into color, representing memories coming to life.',
-        video: '/bm-memory-vault.mp4',
+        video: 'https://github.com/Hawchi/Portfolio/releases/download/v1.0/bm-memory-vault.mp4',
       },
       {
         title: 'Member Profiles',
         description: 'Made an edit from the visuals "No Doubt" music video and it\'s playing as looping background video, giving a visual introduction before exploring each member\'s information.',
-        video: '/bm-member-profiles.mp4',
+        video: 'https://github.com/Hawchi/Portfolio/releases/download/v1.0/bm-member-profiles.mp4',
       },
       {
         title: 'Lore Timeline',
         description: 'A structured phase-based system organizes ENHYPEN\'s complex storyline into clear, easy-to-follow chapters, so even new fans can find their way.',
-        video: '/bm-lore.mp4',
+        video: 'https://github.com/Hawchi/Portfolio/releases/download/v1.0/bm-lore.mp4',
       },
     ],
   },
