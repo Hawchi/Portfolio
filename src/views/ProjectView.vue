@@ -661,6 +661,11 @@ h2 em {
   border-radius: 12px;
 }
 
+.features .carousel-content {
+  background-color: #dbe9ff;
+  padding: 2rem;
+}
+
 .carousel-info {
   flex: 1;
   text-align: left;
