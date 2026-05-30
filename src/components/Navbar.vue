@@ -217,6 +217,12 @@ button.active::after {
   position: relative;
   cursor: pointer;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.projects-trigger {
+  display: flex;
   align-items: center;
   gap: 0.25rem;
 }
@@ -239,7 +245,6 @@ button.active::after {
   display: none;
   position: absolute;
   top: 100%;
-  margin-top: 0rem;
   left: 0;
   flex-direction: column;
   background: #fff;
@@ -282,6 +287,10 @@ button.active::after {
     display: flex;
   }
 
+  .has-dropdown {
+    width: 100%;
+  }
+
   .has-dropdown:hover .dropdown {
     display: none;
   }
@@ -295,25 +304,11 @@ button.active::after {
   }
 
   .dropdown.open {
-    display: flex;
+    display: flex !important;
   }
 
   nav {
     padding: 1rem 1.5rem;
   }
 }
-
-.projects-trigger {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-@media (max-width: 768px) {
-  .has-dropdown {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
 </style>
