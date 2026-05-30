@@ -1,3 +1,4 @@
+// navbar test voor probleem
 <template>
   <nav :class="{ scrolled: isScrolled }">
     <button @click="goHome" class="logo">Paulien.</button>
