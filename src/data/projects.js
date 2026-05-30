@@ -163,7 +163,94 @@ export const projects = [
         description: 'Many smaller adjustments such as filter defaults and dropdown settings were changed based on direct feedback from testers trying to complete real tasks.',
       },
     ],
-
     finalImage: '/cz-final.png',
   },
+{
+  id: 'owow-atlas',
+  title: 'OWOW Atlas',
+  category: 'UX/UI Design & Front-End Development',
+  shortDescription: 'A central animation library for OWOW where designers, developers, and clients can discover, preview, and reuse animations, built in React with GSAP, Framer Motion, and CSS.',
+  role: 'UX/UI Designer & Front-End Developer',
+  timeline: '6 weeks',
+  tools: 'Figma · React · GSAP · Framer Motion · CSS',
+  liveUrl: 'https://owo-watlas.vercel.app/',
+  repoUrl: 'https://github.com/Hawchi/OWOWatlas',
+  heroImage: '/owow-hero.png',
+
+  problemTitle: 'Animations with no',
+  problemTitleItalic: 'central home',
+  problem: 'OWOW\'s animations existed inside Atlas, but were never presented in a way that was easy to explore. There was no single overview, making the system fragmented and invisible to designers who needed to know what was already available. New developers had no fast way to discover and reuse existing animations, which slowed down onboarding and led to things being rebuilt from scratch.',
+
+  solutionTitle: 'One library for',
+  solutionTitleItalic: 'everyone',
+  solution: 'Atlas is a central animation library that makes OWOW\'s animations discoverable and reusable for designers, developers, and clients alike. Every animation has a live preview, a short description, and a copyable code snippet so designers can make realistic choices early, developers can grab and go, and clients can explore without needing any technical knowledge.',
+
+  myRoleIntro: 'Within this six-week group project, my contribution focused on the design and front-end development side.',
+  myRoleItems: [
+    {
+      title: 'Figma Designs',
+      description: 'Each team member designed their own version of the interface individually. During the client meeting we presented all designs and the client chose mine as the foundation for the Atlas system.',
+    },
+    {
+      title: 'Client Feedback',
+      description: 'I processed client feedback and translated it into concrete design adjustments throughout the project.',
+    },
+    {
+      title: 'Filter Sidebar Component',
+      description: 'I built the Filter Sidebar in React, a fully functional component that lets users filter animations by category and platform.',
+    },
+    {
+      title: 'Animations',
+      description: 'I designed and developed eight animations using GSAP, Framer Motion, and CSS, covering scroll-triggered reveals, hover interactions, and more.',
+    },
+  ],
+
+  designTitle: 'The',
+  designTitleItalic: 'Design',
+  designIntro: 'These 2 screens are the full Figma design for the Atlas system. The client selected this design as the base.',
+  designScreenshots: [
+    {
+      image: '/owow-design-1.png',
+      caption: 'Library overview',
+    },
+    {
+      image: '/owow-design-2.png',
+      caption: 'Animation preview tab',
+    },
+  ],
+
+iterationIntro: 'During user testing we gathered feedback on the design and made adjustments based on what users told us.',
+iterations: [
+  {
+    title: 'Hero felt too blank',
+    description: 'Users felt the hero section was too empty. Based on their feedback we added a featured animation preview, giving visitors an immediate sense of what Atlas offers before they even start browsing.',
+    image: '/owow-iteration-hero.png',
+  },
+  {
+    title: 'Full page over modal for animation preview',
+    description: 'During user testing we asked whether the animation detail view should open as a modal or as a full page. Users preferred the full page view because the preview contains a lot of information including parameters, code snippets, and metadata, and a modal would feel too cramped for all of that. So we went with the full page view.',
+  },
+],
+
+  animationsTitle: 'Animations',
+  animationsTitleItalic: 'I built',
+  animationsIntro: 'A selection of the animations I developed for the Atlas library, each built for a different interaction pattern and use case.',
+  animations: [
+    {
+      title: 'Bounce Cards',
+      description: 'Cards bounce in with an elastic spring effect, built with GSAP.',
+      video: '/owow-animation3.mp4',
+    },
+    {
+      title: 'Card Stack',
+      description: 'An interactive draggable deck of cards with elastic spring return and swipe-to-back mechanics, built with Framer Motion.',
+      video: '/owow-animation1.mp4',
+    },
+    {
+      title: 'Image Trail',
+      description: 'Images follow the cursor in a trail as you move over the card, built with GSAP.',
+      video: '/owow-animation2.mp4',
+    },
+  ],
+},
 ]
