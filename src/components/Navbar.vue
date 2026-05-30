@@ -16,13 +16,15 @@
         <button @click="scrollTo('skills')" :class="{ active: activeSection === 'skills' }">Skills</button>
       </li>
       <li class="has-dropdown">
-        <button @click="scrollTo('projects')" :class="{ active: activeSection === 'projects' }">
-          Projects ▾
-        </button>
-        <ul class="dropdown">
-          <li><RouterLink to="/projects/border-moonlight" @click="menuOpen = false">Border:Moonlight</RouterLink></li>
-          <li><RouterLink to="/projects/digital-paradise" @click="menuOpen = false">Digital Paradise</RouterLink></li>
-          <li><RouterLink to="/projects/cz-zorgvinder" @click="menuOpen = false">CZ Zorgvinder</RouterLink></li>
+        <div class="projects-trigger">
+          <button @click="handleProjectsClick" :class="{ active: activeSection === 'projects' }">Projects</button>
+          <button class="dropdown-arrow" @click.stop="dropdownOpen = !dropdownOpen" :class="{ open: dropdownOpen }">▾</button>
+        </div>
+        <ul class="dropdown" :class="{ open: dropdownOpen }">
+          <li><RouterLink to="/projects/border-moonlight" @click="closeAll">Border:Moonlight</RouterLink></li>
+          <li><RouterLink to="/projects/digital-paradise" @click="closeAll">Digital Paradise</RouterLink></li>
+          <li><RouterLink to="/projects/cz-zorgvinder" @click="closeAll">CZ Zorgvinder</RouterLink></li>
+          <li><RouterLink to="/projects/owow-atlas" @click="closeAll">OWOW Atlas</RouterLink></li>
         </ul>
       </li>
       <li>
@@ -41,14 +43,25 @@ const route = useRoute()
 const isScrolled = ref(false)
 const activeSection = ref('')
 const menuOpen = ref(false)
+const dropdownOpen = ref(false)
+
+function closeAll() {
+  menuOpen.value = false
+  dropdownOpen.value = false
+}
 
 function goHome() {
-  menuOpen.value = false
+  closeAll()
   if (route.path !== '/') {
     router.push('/')
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+}
+
+function handleProjectsClick() {
+  dropdownOpen.value = false
+  scrollTo('projects')
 }
 
 async function scrollTo(id) {
@@ -205,6 +218,21 @@ button.active::after {
   cursor: pointer;
   display: flex;
   align-items: center;
+  gap: 0.25rem;
+}
+
+.dropdown-arrow {
+  padding: 0.25rem;
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown a:hover {
+  color: #e07a7a;
 }
 
 .dropdown {
@@ -225,6 +253,10 @@ button.active::after {
 
 .has-dropdown:hover .dropdown {
   display: flex;
+}
+
+.dropdown.open {
+  display: flex !important;
 }
 
 @media (max-width: 768px) {
@@ -259,6 +291,10 @@ button.active::after {
     box-shadow: none;
     padding: 0.5rem 0 0 1rem;
     border-top: none;
+    display: none;
+  }
+
+  .dropdown.open {
     display: flex;
   }
 
@@ -266,4 +302,18 @@ button.active::after {
     padding: 1rem 1.5rem;
   }
 }
+
+.projects-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .has-dropdown {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 </style>
