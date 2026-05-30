@@ -20,26 +20,26 @@ export const projects = [
     featuresTitle: 'Each section has its',    featuresTitle: 'Each section has its',
     featuresTitleItalic: 'own world',
     featuresSubtitle: 'Instead of standard pages, each part of the site introduces the user to a different aspect of the ENHYPEN universe through visuals and interaction.',
-    features: [
+features: [
       {
         title: 'Discography',
         description: 'The discography page includes a video player that automatically plays and cycles through music videos, making the experience more dynamic and connected to the music.',
-        video: 'https://github.com/Hawchi/Portfolio/releases/download/v1.0/bm-discography.mp4',
+        video: 'https://res.cloudinary.com/dgwpuu2sq/video/upload/bm-discography_jgwsgm.mp4',
       },
       {
         title: 'Memory Vault',
         description: 'Designed as a digital archive with a continuous film roll animation. A hover effect transitions black-and-white clips into color, representing memories coming to life.',
-        video: 'https://github.com/Hawchi/Portfolio/releases/download/v1.0/bm-memory-vault.mp4',
+        video: 'https://res.cloudinary.com/dgwpuu2sq/video/upload/bm-memory-vault_jxppqe.mp4',
       },
       {
         title: 'Member Profiles',
         description: 'Made an edit from the visuals "No Doubt" music video and it\'s playing as looping background video, giving a visual introduction before exploring each member\'s information.',
-        video: 'https://github.com/Hawchi/Portfolio/releases/download/v1.0/bm-member-profiles.mp4',
+        video: 'https://res.cloudinary.com/dgwpuu2sq/video/upload/bm-member-profile_unmcn2.mp4',
       },
       {
         title: 'Lore Timeline',
         description: 'A structured phase-based system organizes ENHYPEN\'s complex storyline into clear, easy-to-follow chapters, so even new fans can find their way.',
-        video: 'https://github.com/Hawchi/Portfolio/releases/download/v1.0/bm-lore.mp4',
+        video: 'https://res.cloudinary.com/dgwpuu2sq/video/upload/bm-lore_lgautc.mp4',
       },
     ],
   },
