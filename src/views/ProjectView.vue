@@ -30,7 +30,7 @@
       </div>
 
       <div class="project-hero-image">
-        <img :src="`/${project.id}.png`" :alt="project.title" />
+      <img :src="project.heroImage || `/${project.id}.png`" :alt="project.title" />
       </div>
     </section>
 
@@ -55,95 +55,96 @@
       </div>
     </section>
 
-  <section class="research" v-if="project.researchIntro">
-  <div class="features-header">
-    <p class="label">DISCOVERY</p>
-    <h2>Discovery & <em>User Research</em></h2>
-    <p class="features-subtitle">{{ project.researchIntro }}</p>
-  </div>
+    <section class="my-role" v-if="project.myRoleItems">
+      <div class="features-header">
+        <p class="label">MY CONTRIBUTION</p>
+        <h2>My <em>Role</em></h2>
+        <p class="features-subtitle">{{ project.myRoleIntro }}</p>
+      </div>
 
-  <div class="research-content">
-    <div class="research-findings">
-      <p class="block-label">WHAT USERS TOLD US</p>
-      <div class="findings-grid">
-        <div class="finding-card" v-for="(finding, index) in project.researchFindings" :key="index">
-          <h3>{{ finding.title }}</h3>
-          <p>{{ finding.description }}</p>
+      <div class="role-grid">
+        <div class="role-card" v-for="(item, index) in project.myRoleItems" :key="index">
+          <span class="role-number">0{{ index + 1 }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
         </div>
       </div>
-    </div>
 
-    <div class="research-insights">
-      <p class="block-label">WHAT THE CLIENT NEEDED</p>
-      <ul>
-        <li v-for="(insight, index) in project.researchInsights" :key="index">{{ insight }}</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="research-image" v-if="project.researchImage">
-    <img :src="project.researchImage" alt="Research sticky notes" />
-  </div>
-</section>
-
-<section class="prototyping" v-if="project.interventions">
-  <div class="features-header">
-    <p class="label">IDEATION</p>
-    <h2>Ideation & <em>Prototyping</em></h2>
-    <p class="features-subtitle">{{ project.prototypingIntro }}</p>
-  </div>
-
-  <p class="block-label" style="max-width:1000px; margin: 0 auto 1.5rem auto;">KEY DESIGN INTERVENTIONS</p>
-  <div class="interventions-grid">
-    <div class="intervention-card" v-for="(item, index) in project.interventions" :key="index">
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description }}</p>
-    </div>
-  </div>
-
-  <div class="before-after" v-if="project.beforeImage">
-    <p class="label" style="max-width:1000px; margin: 3rem auto 1.5rem auto;">BEFORE & AFTER</p>
-    <div class="before-after-grid">
-      <div>
-        <p class="ba-label">BEFORE — CZ CLINIC INFORMATION</p>
-        <img :src="project.beforeImage" alt="Before redesign" />
+      <div class="role-outcome" v-if="project.myRoleOutcome">
+        <p class="outcome-text">⭐ {{ project.myRoleOutcome }}</p>
       </div>
-      <div>
-        <p class="ba-label">AFTER — THE REDESIGN</p>
-        <img :src="project.afterImage" alt="After redesign" />
+    </section>
+
+    <section class="research" v-if="project.researchIntro">
+      <div class="features-header">
+        <p class="label">DISCOVERY</p>
+        <h2>Discovery & <em>User Research</em></h2>
+        <p class="features-subtitle">{{ project.researchIntro }}</p>
       </div>
-    </div>
-  </div>
-  </section>
 
-<section class="iteration" v-if="project.iterations">
-  <div class="features-header">
-    <p class="label">USER TESTING</p>
-    <h2>User Testing & <em>Iteration</em></h2>
-    <p class="features-subtitle">{{ project.iterationIntro }}</p>
-  </div>
+      <div class="research-content">
+        <div class="research-findings">
+          <p class="block-label">WHAT USERS TOLD US</p>
+          <div class="findings-grid">
+            <div class="finding-card" v-for="(finding, index) in project.researchFindings" :key="index">
+              <h3>{{ finding.title }}</h3>
+              <p>{{ finding.description }}</p>
+            </div>
+          </div>
+        </div>
 
-  <p class="block-label" style="max-width:700px; margin: 0 auto 1.5rem auto;">HOW FEEDBACK CHANGED THE DESIGN</p>
-  <div class="iteration-list">
-    <div class="iteration-item" v-for="(item, index) in project.iterations" :key="index">
-    <div class="iteration-icon">★</div>
-      <div>
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
+        <div class="research-insights">
+          <p class="block-label">WHAT THE CLIENT NEEDED</p>
+          <ul>
+            <li v-for="(insight, index) in project.researchInsights" :key="index">{{ insight }}</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="final-design" v-if="project.finalImage">
-  <div class="features-header">
-    <p class="label">FINAL DESIGN</p>
-    <h2>The <em>Redesign</em></h2>
-  </div>
-  <div class="final-image">
-    <img :src="project.finalImage" alt="Final redesign" />
-  </div>
-</section>
+      <div class="research-image" v-if="project.researchImage">
+        <img :src="project.researchImage" alt="Research sticky notes" />
+      </div>
+    </section>
+
+    <section class="prototyping" v-if="project.interventions">
+      <div class="features-header">
+        <p class="label">IDEATION</p>
+        <h2>Ideation & <em>Prototyping</em></h2>
+        <p class="features-subtitle">{{ project.prototypingIntro }}</p>
+      </div>
+
+      <p class="block-label" style="max-width:1000px; margin: 0 auto 1.5rem auto;">KEY DESIGN INTERVENTIONS</p>
+      <div class="interventions-grid">
+        <div class="intervention-card" v-for="(item, index) in project.interventions" :key="index">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+
+      <div class="before-after" v-if="project.beforeImage">
+        <p class="label" style="max-width:1000px; margin: 3rem auto 1.5rem auto;">BEFORE & AFTER</p>
+        <div class="before-after-grid">
+          <div>
+            <p class="ba-label">BEFORE — CZ CLINIC INFORMATION</p>
+            <img :src="project.beforeImage" alt="Before redesign" />
+          </div>
+          <div>
+            <p class="ba-label">AFTER — THE REDESIGN</p>
+            <img :src="project.afterImage" alt="After redesign" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-design" v-if="project.finalImage">
+      <div class="features-header">
+        <p class="label">FINAL DESIGN</p>
+        <h2>The <em>Redesign</em></h2>
+      </div>
+      <div class="final-image">
+        <img :src="project.finalImage" alt="Final redesign" />
+      </div>
+    </section>
 
     <section class="features" v-if="project.features">
       <div class="features-header">
@@ -178,6 +179,84 @@
         </div>
 
         <button class="carousel-btn next" @click="nextSlide">›</button>
+      </div>
+    </section>
+
+    <section class="the-design" v-if="project.designScreenshots">
+      <div class="features-header">
+        <p class="label">FIGMA</p>
+        <h2>{{ project.designTitle }} <em>{{ project.designTitleItalic }}</em></h2>
+        <p class="features-subtitle">{{ project.designIntro }}</p>
+      </div>
+
+      <div class="design-screenshots">
+        <div
+          class="design-screenshot-item"
+          v-for="(screenshot, index) in project.designScreenshots"
+          :key="index"
+        >
+          <img :src="screenshot.image" :alt="screenshot.caption" />
+          <p class="screenshot-caption">{{ screenshot.caption }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="iteration" v-if="project.iterations">
+      <div class="features-header">
+        <p class="label">USER TESTING</p>
+        <h2>User Testing & <em>Iteration</em></h2>
+        <p class="features-subtitle">{{ project.iterationIntro }}</p>
+      </div>
+
+    <p class="label" style="max-width:700px; margin: 0 auto 1.5rem auto;">HOW FEEDBACK CHANGED THE DESIGN</p>
+      <div class="iteration-list">
+      <div class="iteration-item" v-for="(item, index) in project.iterations" :key="index">
+        <div class="iteration-icon">★</div>
+        <div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+          <img v-if="item.image" :src="item.image" :alt="item.title" class="iteration-image" />
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="animations" v-if="project.animations">
+      <div class="features-header">
+        <p class="label">ANIMATIONS</p>
+        <h2>{{ project.animationsTitle }} <em>{{ project.animationsTitleItalic }}</em></h2>
+        <p class="features-subtitle">{{ project.animationsIntro }}</p>
+      </div>
+
+      <div class="carousel">
+        <button class="carousel-btn prev" @click="prevAnimation">‹</button>
+
+        <div
+          class="carousel-content"
+          @touchstart="handleTouchStart"
+          @touchend="handleTouchEndAnim"
+        >
+          <div class="carousel-video">
+            <video
+              :src="project.animations[currentAnimation].video"
+              autoplay muted loop playsinline
+            ></video>
+          </div>
+          <div class="carousel-info">
+            <h3>{{ project.animations[currentAnimation].title }}</h3>
+            <p>{{ project.animations[currentAnimation].description }}</p>
+            <div class="carousel-dots">
+              <span
+                v-for="(anim, index) in project.animations"
+                :key="index"
+                :class="['dot', { active: index === currentAnimation }]"
+                @click="currentAnimation = index"
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-btn next" @click="nextAnimation">›</button>
       </div>
     </section>
 
@@ -216,14 +295,14 @@
     </section>
 
     <section class="vinyl-interaction" v-if="project.interactionVideo">
-          <div class="vinyl-text">
-            <p class="label">THE INTERACTION</p>
-            <h2>{{ project.interactionTitle }} <em>{{ project.interactionTitleItalic }}</em></h2>
-            <p>{{ project.interactionDescription }}</p>
-          </div>
-          <div class="vinyl-video">
-            <video :src="project.interactionVideo" autoplay muted loop playsinline></video>
-          </div>
+      <div class="vinyl-text">
+        <p class="label">THE INTERACTION</p>
+        <h2>{{ project.interactionTitle }} <em>{{ project.interactionTitleItalic }}</em></h2>
+        <p>{{ project.interactionDescription }}</p>
+      </div>
+      <div class="vinyl-video">
+        <video :src="project.interactionVideo" autoplay muted loop playsinline></video>
+      </div>
     </section>
 
     <section class="back-top">
@@ -248,6 +327,7 @@ import ContactSection from '../components/ContactSection.vue'
 const route = useRoute()
 const router = useRouter()
 const currentSlide = ref(0)
+const currentAnimation = ref(0)
 
 const project = computed(() => {
   return projects.find(p => p.id === route.params.id)
@@ -273,6 +353,18 @@ function prevSlide() {
   }
 }
 
+function nextAnimation() {
+  if (project.value && project.value.animations) {
+    currentAnimation.value = (currentAnimation.value + 1) % project.value.animations.length
+  }
+}
+
+function prevAnimation() {
+  if (project.value && project.value.animations) {
+    currentAnimation.value = (currentAnimation.value - 1 + project.value.animations.length) % project.value.animations.length
+  }
+}
+
 let touchStartX = 0
 
 function handleTouchStart(e) {
@@ -282,12 +374,15 @@ function handleTouchStart(e) {
 function handleTouchEnd(e) {
   const touchEndX = e.changedTouches[0].clientX
   const diff = touchStartX - touchEndX
+  if (diff > 50) nextSlide()
+  else if (diff < -50) prevSlide()
+}
 
-  if (diff > 50) {
-    nextSlide()
-  } else if (diff < -50) {
-    prevSlide()
-  }
+function handleTouchEndAnim(e) {
+  const touchEndX = e.changedTouches[0].clientX
+  const diff = touchStartX - touchEndX
+  if (diff > 50) nextAnimation()
+  else if (diff < -50) prevAnimation()
 }
 </script>
 
@@ -554,9 +649,7 @@ h2 em {
   gap: 3rem;
   align-items: center;
   flex: 1;
-  background-color: #dbe9ff;
   border-radius: 16px;
-  padding: 2rem;
 }
 
 .carousel-video {
@@ -571,6 +664,9 @@ h2 em {
 .carousel-info {
   flex: 1;
   text-align: left;
+  background-color: #dbe9ff;  
+  border-radius: 16px;
+  padding: 2rem;
 }
 
 .carousel-info h3 {
@@ -955,6 +1051,12 @@ h2 em {
   line-height: 1.7;
 }
 
+.iteration-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+}
+
 .final-design {
   padding: 6rem 8rem;
   background-color: #f7f9ff;
@@ -979,6 +1081,108 @@ h2 em {
   .before-after-grid { grid-template-columns: 1fr; }
   .iteration { padding: 3rem 2rem; }
   .final-design { padding: 3rem 2rem; }
+}
+
+.my-role {
+  padding: 6rem 8rem;
+  background-color: #fff;
+  border-top: 1px solid #e8e8e8;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.role-card {
+  background-color: #f7f9ff;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #e8e8e8;
+}
+
+.role-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: #e07a7a;
+  display: block;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+.role-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.role-card p {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.role-outcome {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #dbe9ff;
+  border-radius: 12px;
+  padding: 1.25rem 2rem;
+  text-align: center;
+}
+
+.outcome-text {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.the-design {
+  padding: 6rem 8rem;
+  background-color: #f7f9ff;
+  border-top: 1px solid #e8e8e8;
+}
+
+.design-screenshots {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.design-screenshot-item img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e8e8e8;
+}
+
+.screenshot-caption {
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.animations {
+  padding: 6rem 8rem;
+  background-color: #fff;
+  border-top: 1px solid #e8e8e8;
+}
+
+@media (max-width: 768px) {
+  .my-role { padding: 3rem 2rem; }
+  .role-grid { grid-template-columns: 1fr; }
+  .the-design { padding: 3rem 2rem; }
+  .animations { padding: 3rem 2rem; }
 }
 
 </style>
