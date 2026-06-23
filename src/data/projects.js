@@ -173,8 +173,8 @@ features: [
   role: 'UX/UI Designer & Front-End Developer',
   timeline: '6 weeks',
   tools: 'Figma · React · GSAP · Framer Motion · CSS',
-  liveUrl: 'https://owo-watlas.vercel.app/',
-  repoUrl: 'https://github.com/Hawchi/OWOWatlas',
+  liveUrl: 'https://owow-atlas-umber.vercel.app/',
+  repoUrl: 'https://github.com/Hawchi/OWOW-Atlas',
   heroImage: '/owow-hero.png',
 
   problemTitle: 'Animations with no',
