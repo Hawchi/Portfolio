@@ -10,6 +10,8 @@
           <span class="tag">Figma</span>
           <span class="tag">Prototyping</span>
           <span class="tag">Wireframing</span>
+          <span class="tag">User Research</span>
+          <span class="tag">Usability Testing</span>
         </div>
       </div>
 
@@ -21,6 +23,7 @@
           <span class="tag">CSS</span>
           <span class="tag">JavaScript</span>
           <span class="tag">Vue.js</span>
+          <span class="tag">React</span>
         </div>
       </div>
     </div>

@@ -9,15 +9,15 @@
         <p class="description">{{ project.shortDescription }}</p>
 
         <div class="meta">
-          <div class="meta-item">
+          <div class="meta-item" v-if="project.role">
             <span class="meta-label">ROLE</span>
             <span class="meta-value">{{ project.role }}</span>
           </div>
-          <div class="meta-item">
+          <div class="meta-item" v-if="project.timeline">
             <span class="meta-label">TIMELINE</span>
             <span class="meta-value">{{ project.timeline }}</span>
           </div>
-          <div class="meta-item">
+          <div class="meta-item" v-if="project.tools">
             <span class="meta-label">TOOLS</span>
             <span class="meta-value">{{ project.tools }}</span>
           </div>
@@ -146,9 +146,28 @@
       </div>
     </section>
 
+    <section class="features" v-if="project.showcaseVideo">
+      <div class="features-header">
+        <p class="label">THE INTERACTION</p>
+        <h2>{{ project.showcaseTitle }} <em>{{ project.showcaseTitleItalic }}</em></h2>
+      </div>
+      <div class="carousel">
+        <div class="carousel-content">
+          <div class="carousel-video">
+            <video :src="project.showcaseVideo" :aria-label="`${project.showcaseTitle} ${project.showcaseTitleItalic}`" autoplay muted loop playsinline controls></video>
+          </div>
+          <div class="carousel-info">
+            <h3>{{ project.showcaseTitle }} {{ project.showcaseTitleItalic }}</h3>
+            <p>{{ project.showcaseDescription }}</p>
+            <a v-if="project.showcaseUrl" :href="project.showcaseUrl" target="_blank" rel="noopener noreferrer" class="btn-primary showcase-link">Try it yourself</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="features" v-if="project.features">
       <div class="features-header">
-        <p class="label">DYNAMIC LANDING EXPERIENCES</p>
+        <p class="label">{{ project.featuresLabel || 'DYNAMIC LANDING EXPERIENCES' }}</p>
         <h2>{{ project.featuresTitle }} <em>{{ project.featuresTitleItalic }}</em></h2>
         <p class="features-subtitle">{{ project.featuresSubtitle }}</p>
       </div>
@@ -162,7 +181,12 @@
           @touchend="handleTouchEnd"
         >
           <div class="carousel-video">
-            <video :src="project.features[currentSlide].video" autoplay muted loop playsinline></video>
+            <video v-if="project.features[currentSlide].video" :src="project.features[currentSlide].video" autoplay muted loop playsinline></video>
+            <div v-else class="recording-placeholder">
+              <span aria-hidden="true">▷</span>
+              <p>Screen recording coming soon</p>
+              <a v-if="project.features[currentSlide].liveUrl" :href="project.features[currentSlide].liveUrl" target="_blank" rel="noopener noreferrer" class="btn-primary">Explore Live</a>
+            </div>
           </div>
           <div class="carousel-info">
             <h3>{{ project.features[currentSlide].title }}</h3>
@@ -387,6 +411,32 @@ function handleTouchEndAnim(e) {
 </script>
 
 <style scoped>
+.showcase-link {
+  margin-top: 1.5rem;
+}
+
+.recording-placeholder {
+  min-height: 240px;
+  aspect-ratio: 16 / 10;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #f7f9ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  color: #555;
+  font-family: 'Baloo Bhai 2', sans-serif;
+}
+
+.recording-placeholder > span {
+  font-size: 3rem;
+  line-height: 1;
+  color: #e07a7a;
+}
+
 .project-hero {
   display: flex;
   justify-content: space-between;
