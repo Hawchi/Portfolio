@@ -154,7 +154,7 @@
       <div class="carousel">
         <div class="carousel-content">
           <div class="carousel-video">
-            <video :src="project.showcaseVideo" :aria-label="`${project.showcaseTitle} ${project.showcaseTitleItalic}`" autoplay muted loop playsinline controls></video>
+            <video :src="project.showcaseVideo" :aria-label="`${project.showcaseTitle} ${project.showcaseTitleItalic}`" autoplay muted loop playsinline></video>
           </div>
           <div class="carousel-info">
             <h3>{{ project.showcaseTitle }} {{ project.showcaseTitleItalic }}</h3>
