@@ -25,6 +25,7 @@
           <li><RouterLink to="/projects/digital-paradise" @click="closeAll">Digital Paradise</RouterLink></li>
           <li><RouterLink to="/projects/cz-zorgvinder" @click="closeAll">CZ Zorgvinder</RouterLink></li>
           <li><RouterLink to="/projects/owow-atlas" @click="closeAll">OWOW Atlas</RouterLink></li>
+          <li><RouterLink to="/projects/kagi" @click="closeAll">KAGI</RouterLink></li>
         </ul>
       </li>
       <li>
