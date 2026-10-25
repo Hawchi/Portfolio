@@ -7,7 +7,7 @@ export const projects = [
     role: 'UX/UI Designer & Front-End Developer',
     timeline: '15 weeks',
     tools: 'Figma · HTML · CSS · JavaScript',
-    liveUrl: 'https://i566292.luna.fhict.nl/Border-Moonlight/',
+    liveUrl: 'https://border-moonlight.vercel.app/',
     repoUrl: 'https://github.com/Hawchi/Border-Moonlight',
     problemTitle: 'Information was',
     problemTitleItalic: 'scattered',
