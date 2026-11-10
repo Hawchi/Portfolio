@@ -52,7 +52,7 @@ features: [
     timeline: '8 weeks',
     tools: 'Figma · HTML · CSS · JavaScript',
     liveUrl: 'https://i566292.luna.fhict.nl/dj-paradise/',
-    repoUrl: 'https://git.fhict.nl/I546177/branding',
+    repoUrl: 'https://github.com/Hawchi/Digital-Paradise',
     problemTitle: 'Missing a',
     problemTitleItalic: 'visual identity',
     problem: 'Digital Paradise lacked a consistent visual identity that matched the energy of his music and live performances.',

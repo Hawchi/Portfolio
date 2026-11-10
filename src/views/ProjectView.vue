@@ -934,8 +934,12 @@ h2 em {
   }
 }
 
-.highlights-block {
+.highlights-block,
+.solution-cards {
   max-width: 1000px;
+}
+
+.highlights-block {
   margin: 0 auto 3rem auto;
 }
 
@@ -950,11 +954,17 @@ h2 em {
 
 .solution-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
-  max-width: 700px;
   width: 100%;
-  margin: 1.5rem auto 0 auto;
+  margin: 1.5rem auto 3rem;
+}
+
+@media (max-width: 600px) {
+  .solution-cards {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+  }
 }
 
 .solution-card {
