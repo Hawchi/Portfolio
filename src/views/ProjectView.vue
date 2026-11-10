@@ -30,7 +30,7 @@
       </div>
 
       <div class="project-hero-image">
-      <img :src="project.heroImage || `/${project.id}.png`" :alt="project.title" />
+      <img :src="project.heroImage || `/${project.id}.png`" :alt="project.heroAlt || project.title" />
       </div>
     </section>
 
@@ -53,6 +53,28 @@
       <div class="showcase-video" v-if="project.homepageVideo">
         <video :src="project.homepageVideo" autoplay muted loop playsinline></video>
       </div>
+    </section>
+
+    <section class="the-design early-design" v-if="project.earlyDesign">
+      <div class="features-header">
+        <p class="label">{{ project.earlyDesign.label }}</p>
+        <h2>{{ project.earlyDesign.title }} <em>{{ project.earlyDesign.titleItalic }}</em></h2>
+        <p class="features-subtitle">{{ project.earlyDesign.description }}</p>
+      </div>
+      <figure class="design-screenshots">
+        <div class="design-screenshot-item">
+          <a :href="project.earlyDesign.image" target="_blank" rel="noopener noreferrer" aria-label="Open the early design at full size">
+            <img :src="project.earlyDesign.image" :alt="project.earlyDesign.alt" loading="lazy" width="1536" height="1024" />
+          </a>
+          <figcaption class="screenshot-caption">{{ project.earlyDesign.caption }}</figcaption>
+        </div>
+        <div class="role-grid">
+          <div class="role-card" v-for="note in project.earlyDesign.notes" :key="note.title">
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.description }}</p>
+          </div>
+        </div>
+      </figure>
     </section>
 
     <section class="my-role" v-if="project.myRoleItems">
@@ -172,16 +194,22 @@
         <p class="features-subtitle">{{ project.featuresSubtitle }}</p>
       </div>
 
-      <div class="carousel">
-        <button class="carousel-btn prev" @click="prevSlide">‹</button>
+      <div class="carousel" :class="{ 'text-carousel': project.textOnlyFeatures, 'image-carousel': project.imageFeatures }">
+        <button class="carousel-btn prev" aria-label="Previous feature" @click="prevSlide">‹</button>
 
         <div
           class="carousel-content"
           @touchstart="handleTouchStart"
           @touchend="handleTouchEnd"
         >
-          <div class="carousel-video">
-            <video v-if="project.features[currentSlide].video" :src="project.features[currentSlide].video" autoplay muted loop playsinline></video>
+          <div class="carousel-video" v-if="!project.textOnlyFeatures">
+            <a v-if="project.features[currentSlide].image && !featureImageFailed" :href="project.features[currentSlide].image" target="_blank" rel="noopener noreferrer" :aria-label="`Open ${project.features[currentSlide].title} screenshot at full size`">
+              <img :src="project.features[currentSlide].image" :alt="project.features[currentSlide].imageAlt || project.features[currentSlide].title" loading="lazy" @error="featureImageFailed = true" />
+            </a>
+            <div v-else-if="project.features[currentSlide].image" class="recording-placeholder">
+              <p>Screenshot coming soon</p>
+            </div>
+            <video v-else-if="project.features[currentSlide].video" :src="project.features[currentSlide].video" autoplay muted loop playsinline></video>
             <div v-else class="recording-placeholder">
               <span aria-hidden="true">▷</span>
               <p>Screen recording coming soon</p>
@@ -192,17 +220,20 @@
             <h3>{{ project.features[currentSlide].title }}</h3>
             <p>{{ project.features[currentSlide].description }}</p>
             <div class="carousel-dots">
-              <span
+              <button
                 v-for="(feature, index) in project.features"
+                type="button"
+                :aria-label="`Show ${feature.title}`"
+                :aria-pressed="index === currentSlide"
                 :key="index"
                 :class="['dot', { active: index === currentSlide }]"
                 @click="currentSlide = index"
-              ></span>
+              ></button>
             </div>
           </div>
         </div>
 
-        <button class="carousel-btn next" @click="nextSlide">›</button>
+        <button class="carousel-btn next" aria-label="Next feature" @click="nextSlide">›</button>
       </div>
     </section>
 
@@ -344,17 +375,25 @@
 
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { projects } from '../data/projects.js'
 import ContactSection from '../components/ContactSection.vue'
 
 const route = useRoute()
 const router = useRouter()
 const currentSlide = ref(0)
+const featureImageFailed = ref(false)
+watch(currentSlide, () => { featureImageFailed.value = false })
 const currentAnimation = ref(0)
 
 const project = computed(() => {
   return projects.find(p => p.id === route.params.id)
+})
+
+watch(() => route.params.id, () => {
+  featureImageFailed.value = false
+  currentSlide.value = 0
+  currentAnimation.value = 0
 })
 
 function goBack() {
@@ -745,6 +784,8 @@ h2 em {
 }
 
 .dot {
+  border: none;
+  padding: 0;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -1240,4 +1281,86 @@ h2 em {
   .animations { padding: 3rem 2rem; }
 }
 
+.text-carousel {
+  max-width: 700px;
+}
+.text-carousel .carousel-content {
+  min-width: 0;
+  padding: 0;
+}
+.text-carousel .carousel-info {
+  min-height: 220px;
+  width: 100%;
+}
+.dot:focus-visible {
+  outline: 2px solid #1a1a2e;
+  outline-offset: 4px;
+}
+@media (max-width: 768px) {
+  .text-carousel {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    gap: 0.5rem;
+  }
+  .text-carousel .carousel-btn {
+    display: flex;
+    width: 36px;
+    height: 36px;
+  }
+  .text-carousel .carousel-info {
+    padding: 1.25rem;
+  }
+}
+.early-design .design-screenshots {
+  max-width: 760px;
+  width: 100%;
+}
+.early-design .design-screenshot-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.early-design .role-grid {
+  width: 100%;
+  margin-bottom: 0;
+}
+.early-design .role-card {
+  background-color: #dbe9ff;
+  border-color: #c5d8f5;
+}
+.early-design .role-card:nth-child(2) {
+  background-color: #f9e7e7;
+  border-color: #edcccc;
+}
+.image-carousel .carousel-content {
+  flex-direction: column;
+  min-width: 0;
+  gap: 0;
+  padding: 1rem;
+}
+.image-carousel .carousel-video,
+.image-carousel .carousel-info {
+  width: 100%;
+}
+.image-carousel .carousel-video img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.image-carousel .carousel-info {
+  padding: 1.25rem 0.5rem 0.5rem;
+}
+@media (max-width: 768px) {
+  .image-carousel {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    gap: 0.5rem;
+  }
+  .image-carousel .carousel-btn {
+    display: flex;
+    width: 36px;
+    height: 36px;
+  }
+}
 </style>

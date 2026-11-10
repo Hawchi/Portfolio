@@ -13,7 +13,7 @@
         :class="{ reverse: index % 2 !== 0 }"
       >
         <div class="project-image">
-        <img :src="project.heroImage || `/${project.id}.png`" :alt="project.title" />
+        <img :src="project.heroImage || `/${project.id}.png`" :alt="project.heroAlt || project.title" />
         </div>
         <div class="project-info">
           <p class="category">{{ project.category }}</p>

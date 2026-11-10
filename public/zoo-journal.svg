@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Zoo Journal</title>
+  <desc id="desc">An illustrated journal with a journey trail, leaves and a heart. Editorial cover artwork, not an application screenshot.</desc>
+  <rect width="800" height="600" rx="20" fill="#f7f9ff"/>
+  <circle cx="635" cy="145" r="83" fill="#dbe9ff"/>
+  <circle cx="151" cy="450" r="97" fill="#dbe9ff"/>
+  <g transform="rotate(-6 400 300)">
+    <rect x="175" y="117" width="450" height="355" rx="20" fill="#c5d8f5"/>
+    <path d="M195 130 Q300 108 400 147 Q500 108 605 130 V445 Q500 423 400 462 Q300 423 195 445Z" fill="#fff" stroke="#1a1a2e" stroke-width="3"/>
+    <path d="M400 147V462" stroke="#c5d8f5" stroke-width="3"/>
+    <path d="M242 361C330 360 248 253 340 254" fill="none" stroke="#e07a7a" stroke-width="5" stroke-dasharray="8 10" stroke-linecap="round"/>
+    <g fill="#1a1a2e"><circle cx="242" cy="361" r="8"/><circle cx="340" cy="254" r="8"/></g>
+    <path d="M265 205C227 177 255 151 273 175C291 151 320 177 281 205L273 213Z" fill="#e07a7a"/>
+    <rect x="435" y="183" width="135" height="130" rx="8" fill="#dbe9ff"/>
+    <path d="M446 294L483 244L511 278L536 252L560 294Z" fill="#c5d8f5"/>
+    <circle cx="537" cy="210" r="13" fill="#e07a7a"/>
+    <g stroke="#c5d8f5" stroke-width="5" stroke-linecap="round"><path d="M440 348H565M440 370H540M440 392H551M235 402H350"/></g>
+  </g>
+  <g fill="none" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"><path d="M638 449Q641 393 680 356M648 410Q620 380 631 360Q659 375 648 410M660 385Q688 391 703 371Q676 361 660 385"/></g>
+</svg>

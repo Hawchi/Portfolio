@@ -26,6 +26,7 @@
           <li><RouterLink to="/projects/cz-zorgvinder" @click="closeAll">CZ Zorgvinder</RouterLink></li>
           <li><RouterLink to="/projects/owow-atlas" @click="closeAll">OWOW Atlas</RouterLink></li>
           <li><RouterLink to="/projects/kagi" @click="closeAll">KAGI</RouterLink></li>
+          <li><RouterLink to="/projects/zoo-journal" @click="closeAll">Zoo Journal</RouterLink></li>
         </ul>
       </li>
       <li>
