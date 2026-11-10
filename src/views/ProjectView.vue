@@ -1332,15 +1332,10 @@ h2 em {
   background-color: #f9e7e7;
   border-color: #edcccc;
 }
-.image-carousel .carousel-content {
-  flex-direction: column;
-  min-width: 0;
-  gap: 0;
-  padding: 1rem;
-}
+.image-carousel .carousel-content,
 .image-carousel .carousel-video,
 .image-carousel .carousel-info {
-  width: 100%;
+  min-width: 0;
 }
 .image-carousel .carousel-video img {
   display: block;
@@ -1348,10 +1343,18 @@ h2 em {
   height: auto;
   border-radius: 12px;
 }
-.image-carousel .carousel-info {
-  padding: 1.25rem 0.5rem 0.5rem;
-}
 @media (max-width: 768px) {
+  .features .image-carousel .carousel-content {
+    gap: 0;
+    padding: 1rem;
+  }
+  .image-carousel .carousel-video,
+  .image-carousel .carousel-info {
+    width: 100%;
+  }
+  .image-carousel .carousel-info {
+    padding: 1.25rem 0.5rem 0.5rem;
+  }
   .image-carousel {
     display: grid;
     grid-template-columns: 36px minmax(0, 1fr) 36px;
