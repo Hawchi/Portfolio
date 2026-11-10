@@ -39,6 +39,7 @@
         <p class="label">THE PROBLEM</p>
         <h2>{{ project.problemTitle }} <em>{{ project.problemTitleItalic }}</em></h2>
         <p>{{ project.problem }}</p>
+        <p v-if="project.problemExtra" class="extra">{{ project.problemExtra }}</p>
       </div>
 
       <hr class="divider" />

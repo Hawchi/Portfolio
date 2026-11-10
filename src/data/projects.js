@@ -56,6 +56,7 @@ features: [
     problemTitle: 'Missing a',
     problemTitleItalic: 'visual identity',
     problem: 'Digital Paradise lacked a consistent visual identity that matched the energy of his music and live performances.',
+    problemExtra: 'Our brief was to design a logo, a brand guide, and supporting visuals that reflected the artist’s Aruban and Venezuelan roots and the energy of his live performances. The identity needed to express community, energy, and authenticity, and make Digital Paradise more recognizable to his audience.',
     solutionTitle: 'A cohesive',
     solutionTitleItalic: 'brand world',
     solution: 'A cohesive visual identity including logo concepts and stylescapes, paired with an interactive website that brings his musical atmosphere to life.',
